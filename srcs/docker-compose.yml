@@ -1,7 +1,7 @@
 version: '3'
 services:
   mariadb:
-    container_name: mariadb
+    container_name: inception_mariadb
     networks:
       - inception
     build: 
@@ -15,7 +15,7 @@ services:
       - "3306"
 
   wordpress:
-    container_name: wordpress
+    container_name: inception_wordpress
     env_file: .env
     volumes:
       - wordpress:/var/www/html
@@ -29,7 +29,7 @@ services:
       - "9000"
 
   nginx:
-    container_name: nginx
+    container_name: inception_nginx
     volumes:
       - wordpress:/var/www/html
     networks:
