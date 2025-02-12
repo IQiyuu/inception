@@ -1,6 +1,10 @@
 [server]
 
 [mysqld]
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow-query.log
+long_query_time = 2  # En secondes, ajuster selon le besoin
+log_queries_not_using_indexes = 1  # Log toutes les requêtes sans index
 
 user                    = mysql
 pid-file                = /run/mysqld/mysqld.pid

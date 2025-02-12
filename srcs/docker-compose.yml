@@ -7,7 +7,7 @@ services:
     build: 
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    env_file: .env
+    env_file: /home/dgoubin/.env
     volumes:
       - mariadb:/var/lib/mysql
     restart: on-failure
@@ -16,7 +16,7 @@ services:
 
   wordpress:
     container_name: inception_wordpress
-    env_file: .env
+    env_file: /home/dgoubin/.env
     volumes:
       - wordpress:/var/www/html
     networks:
@@ -43,15 +43,17 @@ services:
 
 volumes:
   wordpress:
+    driver: local
     driver_opts:
       type: 'none'
-      o: bind
+      o: 'bind'
       device: /home/dgoubin/data/wordpress
 
   mariadb:
+    driver: local
     driver_opts:
       type: 'none'
-      o: bind
+      o: 'bind'
       device: /home/dgoubin/data/mariadb
 
 networks:

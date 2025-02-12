@@ -1,5 +1,5 @@
 # environnement de la machine (debian>alpine car plus light)
-FROM debian:buster
+FROM debian:bullseye
 
 # update apk (apk = apt)
 RUN apt update -y
