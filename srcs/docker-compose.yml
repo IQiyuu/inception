@@ -43,6 +43,7 @@ services:
 
 volumes:
   wordpress:
+    name: "wordpress"
     driver: local
     driver_opts:
       type: 'none'
@@ -50,6 +51,7 @@ volumes:
       device: /home/dgoubin/data/wordpress
 
   mariadb:
+    name: "mariadb"
     driver: local
     driver_opts:
       type: 'none'
@@ -58,4 +60,5 @@ volumes:
 
 networks:
   inception:
+    name: "inception_networks"
     driver: bridge

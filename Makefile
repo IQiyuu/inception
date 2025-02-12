@@ -9,17 +9,24 @@ up: build
 build:
 	${COMPOSE} build
 
+restart:
+	${COMPOSE} restart
+
+logs:
+	${COMPOSE} logs
+
 stop:
 	${COMPOSE} stop
 
 start:
 	${COMPOSE} start
 
-clean:
+down:
 	${COMPOSE} down
 
-fclean: clean
+clean: down
+	docker system prune -af
 	rm -rf ${DATA}/wordpress/*
 	rm -rf ${DATA}/mariadb/*
 
-re: fclean all
+re: clean all
