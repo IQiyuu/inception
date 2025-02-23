@@ -3,6 +3,7 @@
 if [ ! -d /var/lib/mysql/inception ] ; then
     # lance mysql
     exec mysqld_safe &
+    sleep 3
     # creer la database '$SQL_DB' si elle n existe pas deja
     mysql -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DB};"
     # pareil qu au dessus mais avec un user + son password
@@ -18,5 +19,6 @@ if [ ! -d /var/lib/mysql/inception ] ; then
     mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
 fi;
 
+chmod 777 /var/lib/mysql/inception/*
 # la way recommande pour lancer mysql
 exec mysqld_safe
